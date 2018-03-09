@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.components', ['ngRoute'])
+angular.module('clash', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/clash', {

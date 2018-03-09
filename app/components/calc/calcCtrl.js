@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.components', ['ngRoute'])
+angular.module('calc', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/calc', {
