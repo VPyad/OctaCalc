@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700);
+
+$font-stack: 'Source Serif Pro', serif;
+
+*, html {
+  font-family: $font-stack;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+button {
+  margin-bottom: 5pt;
+  margin-left: 5pt;
+  margin-right: 5pt;
+  margin-top: 5pt;
+  transition-property: color, background-color;
+  transition-duration: .2s;
+}
+.calcs {
+  height: 100%;
+  font-size: 2em;
+  margin-bottom: 5pt;
+  margin-left: 5pt;
+  margin-right: 5pt;
+  margin-top: 5pt;
+}
+
+.row {
+  /*order: 1px solid gray; */
+}
