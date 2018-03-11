@@ -7,65 +7,65 @@
 
     <div class="container" id="calcs-section">
         <div class="row">
-            <input title="calc_input" id="print" class="col form-control calcs text-right" value="asasasa" type="text" ng-keypress="onCalcInput($event)" name="input" size="16">
+            <input title="calc_input" id="print" class="col form-control calcs text-right" type="text" ng-keypress="onCalcInput($event)" name="input" size="16">
         </div>
     </div>
 
     <div class="container" id="calc-buttons">
         <div class="row">
             <div class="col">
-                <button class="btn btn-lg btn-primary col">7</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('7')">7</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-secondary col">C</button>
+                <button class="btn btn-lg btn-secondary col" ng-click="onServiceBtnClicked('C')">C</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-secondary col">←</button>
+                <button class="btn btn-lg btn-secondary col" ng-click="onServiceBtnClicked('Del')">←</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-primary col">/</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-lg btn-primary col">4</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-lg btn-primary col">5</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-lg btn-primary col">6</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-lg btn-primary col">x</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('/')">/</button>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn btn-lg btn-primary col">1</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('4')">4</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-primary col">2</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('5')">5</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-primary col">3</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('6')">6</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-primary col">-</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('*')">x</button>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <button class="btn btn-lg btn-secondary col">CE</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('1')">1</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-primary col">0</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('2')">2</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-success col">=</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('3')">3</button>
             </div>
             <div class="col">
-                <button class="btn btn-lg btn-primary col">+</button>
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('-')">-</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-lg btn-secondary col" ng-click="onServiceBtnClicked('CE')">CE</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('0')">0</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-lg btn-success col" ng-click="onServiceBtnClicked('=')">=</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-lg btn-primary col" ng-click="onInputBtnClicked('+')">+</button>
             </div>
         </div>
     </div>
