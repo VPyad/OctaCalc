@@ -24,7 +24,7 @@ function CalcCtrl($scope) {
     inputCalcControl.onpaste = function (ev) {
         if (!legalInputChars.test(ev.clipboardData.getData('text/plain'))) {
             ev.preventDefault();
-            // show error
+            // TODO show error
         }
     }
 
@@ -63,7 +63,6 @@ function CalcCtrl($scope) {
                 var i = indx.sort()[indx.length - 1];
 
                 inputCalcControl.value = inputCalcControl.value.substring(0, i);
-
                 break;
             case 'CE':
                 inputCalcControl.value = '';
@@ -72,7 +71,46 @@ function CalcCtrl($scope) {
                 inputCalcControl.value = inputCalcControl.value.slice(0, -1);
                 break;
             case '=':
+                if (!legalInputChars.test(inputCalcControl.value)) {
+                    //TODO show error
+                    return;
+                }
+                var expr = buildExpr(inputCalcControl.value, operators);
+                var answer = eval(expr);
+                inputCalcControl.value = parseFloat(answer).toFixed(0);
                 break;
         }
     }
+}
+
+function buildExpr(expr, operators) {
+    var arr = [];
+    var num = '';
+
+    for (var i = 0; i < expr.length; i++) {
+        if (operators.includes(expr[i])) {
+            arr.push(buildParser(num));
+            arr.push(expr[i]);
+            num = '';
+        }
+        else {
+            num += expr[i];
+            if (i === expr.length - 1) {
+                arr.push(buildParser(num));
+            }
+        }
+    }
+
+    var res = '(';
+    arr.forEach(function (item) {
+        res += item;
+    });
+    res += ').toString(8)';
+
+    return res;
+}
+
+function buildParser(num) {
+    var s = 'parseInt(' + num + ', 8)';
+    return s;
 }
