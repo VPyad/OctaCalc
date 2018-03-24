@@ -76,11 +76,15 @@ function CalcCtrl($scope) {
                     return;
                 }
                 var expr = buildExpr(inputCalcControl.value, operators);
-                var answer = eval(expr);
+                var answer = calculate(expr);
                 inputCalcControl.value = parseFloat(answer).toFixed(0);
                 break;
         }
     }
+}
+
+function calculate(expr) {
+    return eval(expr);
 }
 
 function buildExpr(expr, operators) {
