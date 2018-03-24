@@ -10,5 +10,5 @@ angular.module('welcome', ['ngRoute'])
     }])
 
     .controller('WelcomeCtrl', [function() {
-
+        //window.alert('!!!');
     }]);
