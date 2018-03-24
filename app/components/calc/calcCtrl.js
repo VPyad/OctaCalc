@@ -32,7 +32,13 @@ function CalcCtrl($scope) {
         var inputChar = String.fromCharCode($event.keyCode);
         var lastCharOfInput = inputCalcControl.value.slice(-1);
 
-        if (!(digits.includes(inputChar) || (operators.includes(inputChar) && !operators.includes(lastCharOfInput)))) {
+        // prevent input if first char is operator
+
+        var isFirstCharIsOperator = (operators.includes(inputChar) && inputCalcControl.value.toString().length === 0);
+        var isInputIsDigitOrOperator = (digits.includes(inputChar) || operators.includes(inputChar));
+        var isInputIsOperatorAndLastCharIsOperator = (operators.includes(lastCharOfInput) && operators.includes(inputChar));
+
+        if (isFirstCharIsOperator || !isInputIsDigitOrOperator || isInputIsOperatorAndLastCharIsOperator){
             $event.preventDefault();
         }
     }
