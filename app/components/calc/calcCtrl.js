@@ -16,7 +16,9 @@ angular.module('calc', ['ngRoute'])
 
 const legalInputChars = new RegExp('^(\\d+[\\+\\-\\*\\/]{1})+\\d+$'); //^[-+]?[0-9]+([-+*/]+[-+]?[0-9]+)*$
 var digits = ['0', '1', '2', '3', '4', '5', '6', '7'];
-var operators = ['+', '-', '*', '/'];
+var validOperators = ['+', '-', '*', '/'];
+
+//var operators2 = ['+', '-', '*', '/'];
 
 function CalcCtrl($scope) {
     var inputCalcControl = document.getElementById('print');
@@ -34,19 +36,27 @@ function CalcCtrl($scope) {
 
         // prevent input if first char is operator
 
-        var isFirstCharIsOperator = (operators.includes(inputChar) && inputCalcControl.value.toString().length === 0);
-        var isInputIsDigitOrOperator = (digits.includes(inputChar) || operators.includes(inputChar));
-        var isInputIsOperatorAndLastCharIsOperator = (operators.includes(lastCharOfInput) && operators.includes(inputChar));
+        /*var a = validOperators.includes(inputChar);
+        var b = inputCalcControl.value.toString().length === 0;
+        var wtf = operators2.includes(inputChar);*/
 
-        if (isFirstCharIsOperator || !isInputIsDigitOrOperator || isInputIsOperatorAndLastCharIsOperator){
+        var isFirstCharIsOperator = (validOperators.includes(inputChar) && inputCalcControl.value.toString().length === 0);
+        var isInputIsDigitOrOperator = (digits.includes(inputChar) || validOperators.includes(inputChar));
+        var isInputIsOperatorAndLastCharIsOperator = (validOperators.includes(lastCharOfInput) && validOperators.includes(inputChar));
+
+        if (isFirstCharIsOperator || !isInputIsDigitOrOperator || isInputIsOperatorAndLastCharIsOperator) {
             $event.preventDefault();
         }
     }
 
     $scope.onInputBtnClicked = function ($input) {
+        if (validOperators.includes($input) && inputCalcControl.value.toString().length === 0) {
+            return;
+        }
+
         var lastCharOfInput = inputCalcControl.value.slice(-1);
-        if (operators.includes($input)) {
-            if (operators.includes(lastCharOfInput)) { // last char is operator → remove last operator and insert current
+        if (validOperators.includes($input)) {
+            if (validOperators.includes(lastCharOfInput)) { // last char is operator → remove last operator and insert current
                 inputCalcControl.value = inputCalcControl.value.slice(0, -1);
                 inputCalcControl.value += $input;
             } else {
@@ -62,7 +72,7 @@ function CalcCtrl($scope) {
             case 'C': // find index of last operator, remove from this index to end of string
                 var indx = [];
 
-                operators.forEach(function (operator) {
+                validOperators.forEach(function (operator) {
                     indx.push(inputCalcControl.value.lastIndexOf(operator))
                 });
 
@@ -81,7 +91,7 @@ function CalcCtrl($scope) {
                     //TODO show error
                     return;
                 }
-                var expr = buildExpr(inputCalcControl.value, operators);
+                var expr = buildExpr(inputCalcControl.value, validOperators);
                 var answer = calculate(expr);
                 inputCalcControl.value = parseFloat(answer).toFixed(0);
                 break;
