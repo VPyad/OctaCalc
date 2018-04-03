@@ -1,10 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>This is CLASH</p>
-</body>
-</html>
+<div class="container">
+    <div class="container" id="title">
+        <h4 class="text-center">
+            Octa clash. Check your 8bit calculation abilities
+        </h4>
+    </div>
+
+    <div>
+        <div class="container" id="task-chooser">
+            <div class="row row-margin">
+                <div class="col-5">
+                    <label for="rangeSelector">Range:</label>
+                    <select ng-init="selectedRange = range[0]" class="form-control" id="rangeSelector"
+                            ng-model="selectedRange"
+                            ng-options="x.alias for x in range"></select>
+                </div>
+                <div class="col-5">
+                    <label for="operatorSelector">Operator:</label>
+                    <select ng-init="selectedOperator=operator[0]" class="form-control" id="operatorSelector"
+                            ng-model="selectedOperator"
+                            ng-options="x.alias for x in operator"></select>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary align-bottom inline-btn" ng-click="onGoBtnClicked()">Go!</button>
+                </div>
+            </div>
+
+            <div class="row row-margin">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="task-text">let`s do it</span>
+                        </div>
+                        <input type="text" class="form-control" id="task-answer" ng-keypress="onAnswerInput($event)" aria-label="answer">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary" style="width: 100%;" ng-click="onCheckBtnClicked()">check</button>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="input-group-text" style="width: 100%" id="answer-text" readonly>
+                </div>
+            </div>
+
+            <div class="row row-margin">
+                <div class="col-3"></div>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('5')">5</button>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('6')">6</button>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('7')">7</button>
+                <div class="col-3"></div>
+            </div>
+
+            <div class="row row-margin">
+                <div class="col-3"></div>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('2')">2</button>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('3')">3</button>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('4')">4</button>
+                <div class="col-3"></div>
+            </div>
+
+            <div class="row row-margin">
+                <div class="col-3"></div>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('0')">0</button>
+                <button class="btn btn-primary col-2 input-btn" ng-click="onInputBtnClicked('1')">1</button>
+                <button class="btn btn-secondary col-2 input-btn" ng-click="onDelBtnClicked()">←</button>
+                <div class="col-3"></div>
+            </div>
+        </div>
+        <p>you selected {{selectedOperator.alias}}</p>
+    </div>
+</div>
